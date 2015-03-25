@@ -437,6 +437,7 @@ void MaxCurvature(cv::InputArray _src, cv::OutputArray _dst, cv::InputArray _mas
 	}
 
 	// Connection of vein centres
+
 	cv::Mat veins = cv::Mat::zeros(src.size(), CV_32F);
 	for (int x = 0; x < src.cols; x++) {
 		for (int y = 0; y < src.rows - 3; y++) {
@@ -449,30 +450,36 @@ void MaxCurvature(cv::InputArray _src, cv::OutputArray _dst, cv::InputArray _mas
 		}
 	}
 
-
-	_printMatrix<float>(veins);
-
-	std::vector<float> greaterThanZeroValues;
-	for (int i = 0; i < veins.size().width; i++) {
-		for (int j = 0; j < veins.size().height; j++) {
-			if (veins.at<float>(cv::Point(i,j)) > 0) {
-				greaterThanZeroValues.push_back(veins.at<float>(cv::Point(i,j)));
-			}
-		}
-	}
-
-	std::sort(greaterThanZeroValues.begin(), greaterThanZeroValues.end());
-	float median = greaterThanZeroValues[greaterThanZeroValues.size()/4*3];
-
-
-	std::cout << median << std::endl;
-
-	_dst.create(src.size(), CV_8U);
+	_dst.create(veins.size(), CV_32F);
 	cv::Mat dst = _dst.getMat();
-	for (int i = 0; i < veins.size().width; i++) {
-		for (int j = 0; j < veins.size().height; j++) {
-			uchar value = (veins.at<float>(cv::Point(i,j)) > median) ? 255 : 0;
-			dst.at<uchar>(cv::Point(i,j)) = value;
-		}
-	}
+	veins.copyTo(dst);
+
+
+
+
+//	_printMatrix<float>(veins);
+
+//	std::vector<float> greaterThanZeroValues;
+//	for (int i = 0; i < veins.size().width; i++) {
+//		for (int j = 0; j < veins.size().height; j++) {
+//			if (veins.at<float>(cv::Point(i,j)) > 0) {
+//				greaterThanZeroValues.push_back(veins.at<float>(cv::Point(i,j)));
+//			}
+//		}
+//	}
+
+//	std::sort(greaterThanZeroValues.begin(), greaterThanZeroValues.end());
+//	float median = greaterThanZeroValues[greaterThanZeroValues.size()/4*3];
+
+
+//	std::cout << median << std::endl;
+
+//	_dst.create(src.size(), CV_8U);
+//	cv::Mat dst = _dst.getMat();
+//	for (int i = 0; i < veins.size().width; i++) {
+//		for (int j = 0; j < veins.size().height; j++) {
+//			uchar value = (veins.at<float>(cv::Point(i,j)) > median) ? 255 : 0;
+//			dst.at<uchar>(cv::Point(i,j)) = value;
+//		}
+//	}
 }
