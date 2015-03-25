@@ -370,7 +370,7 @@ void MaxCurvature(cv::InputArray _src, cv::OutputArray _dst, cv::InputArray _mas
 				cv::flip(roi, dd, 0);
 				cv::Mat d = dd.diag(0);
 
-				_printMatrix<float>(d);
+//				_printMatrix<float>(d);
 
 				float max = FLT_MIN;
 				int pos_max = 0;
@@ -386,9 +386,9 @@ void MaxCurvature(cv::InputArray _src, cv::OutputArray _dst, cv::InputArray _mas
 				int pos_y_max = pos_y_start - pos_max;
 
 
-				std::cout << pos_max << "\t";
-				std::cout << pos_x_max << "\t";
-				std::cout << pos_y_max << std::endl;
+//				std::cout << pos_max << "\t";
+//				std::cout << pos_x_max << "\t";
+//				std::cout << pos_y_max << std::endl;
 
 				float Scr = k4.at<float>(cv::Point(pos_x_max, pos_y_max)) * Wr;
 
