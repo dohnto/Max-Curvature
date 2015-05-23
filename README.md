@@ -14,7 +14,7 @@ Original code can be found: http://www.mathworks.com/matlabcentral/fileexchange/
 
 ![clahe](https://raw.githubusercontent.com/dohnto/Max-Curvature/master/doc/clahe.jpg)
 
-* 200,000 iterations; r = 1; W = 29
+* Maximum curvature
 
 ![clahe](https://raw.githubusercontent.com/dohnto/Max-Curvature/master/doc/mc.png)
 
