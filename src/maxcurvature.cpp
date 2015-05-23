@@ -290,7 +290,6 @@ void MaxCurvature(cv::InputArray _src, cv::OutputArray _dst, cv::InputArray _mas
 				int pos_y_start = pos_y_end - Wr + 1;
 
 
-//				std::cout << pos_x_start << "\t" << pos_y_start<< "\t" << pos_x_end << "\t" << pos_y_end << "\n";
 				cv::Rect rect(pos_x_start, pos_y_start, pos_x_end - pos_x_start + 1, pos_y_end - pos_y_start + 1);
 				cv::Mat dd = k3(rect);
 				cv::Mat d = dd.diag(0);
@@ -386,10 +385,6 @@ void MaxCurvature(cv::InputArray _src, cv::OutputArray _dst, cv::InputArray _mas
 				int pos_y_max = pos_y_start - pos_max;
 
 
-//				std::cout << pos_max << "\t";
-//				std::cout << pos_x_max << "\t";
-//				std::cout << pos_y_max << std::endl;
-
 				float Scr = k4.at<float>(cv::Point(pos_x_max, pos_y_max)) * Wr;
 
 				if (pos_y_max < 0) pos_y_max = 0;
@@ -455,31 +450,4 @@ void MaxCurvature(cv::InputArray _src, cv::OutputArray _dst, cv::InputArray _mas
 	veins.copyTo(dst);
 
 
-
-
-//	_printMatrix<float>(veins);
-
-//	std::vector<float> greaterThanZeroValues;
-//	for (int i = 0; i < veins.size().width; i++) {
-//		for (int j = 0; j < veins.size().height; j++) {
-//			if (veins.at<float>(cv::Point(i,j)) > 0) {
-//				greaterThanZeroValues.push_back(veins.at<float>(cv::Point(i,j)));
-//			}
-//		}
-//	}
-
-//	std::sort(greaterThanZeroValues.begin(), greaterThanZeroValues.end());
-//	float median = greaterThanZeroValues[greaterThanZeroValues.size()/4*3];
-
-
-//	std::cout << median << std::endl;
-
-//	_dst.create(src.size(), CV_8U);
-//	cv::Mat dst = _dst.getMat();
-//	for (int i = 0; i < veins.size().width; i++) {
-//		for (int j = 0; j < veins.size().height; j++) {
-//			uchar value = (veins.at<float>(cv::Point(i,j)) > median) ? 255 : 0;
-//			dst.at<uchar>(cv::Point(i,j)) = value;
-//		}
-//	}
 }
