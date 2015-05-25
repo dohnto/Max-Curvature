@@ -24,7 +24,7 @@ find_package(OpenCV 2.4.7 EXACT REQUIRED)
 include_directories( ${OpenCV_INCLUDE_DIRS} )
 target_link_libraries( MaxCurvature ${OpenCV_LIBS} )
 
-install (TARGETS ${PROJECT_NAME} DESTINATION bin)
+install (TARGETS ${PROJECT_NAME} DESTINATION lib)
 install (FILES ${MaxCurvature.Headers} DESTINATION include)
 
 add_subdirectory(examples)
